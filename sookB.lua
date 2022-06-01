@@ -6114,7 +6114,7 @@ https.request("https://api.telegram.org/bot"..token..'/sendPhoto?chat_id=' .. ms
 end
 if text == "منو اني" then
 if msg.sender.user_id == tonumber(5183684102) then
-LuaTele.sendText(msg_chat_id,msg_id,"‹ : انت الحلفي مطور السورس يقلبي🌚💘
+LuaTele.sendText(msg_chat_id,msg_id,"‹ : انت الحلفي مطور السورس يقلبي🌚💘","md",true)
 elseif msg.sender.user_id == tonumber(Sudo_Id) then
 LuaTele.sendText(msg_chat_id,msg_id,"‹ : انت المطور الاساسي يقلبي🌚💘","md",true)
 elseif msg.DevelopersQ then
