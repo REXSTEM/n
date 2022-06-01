@@ -6119,6 +6119,24 @@ local m = "https://t.me/wffhvv/"..Rrr..""
 local rep = msg.id/2097152/0.5
 https.request("https://api.telegram.org/bot"..Token.."/sendphoto?chat_id="..msg_chat_id.."&caption="..URL.escape(t).."&photo="..m.."&reply_to_message_id="..rep.."&parse_mode=Markdown")
 end
+if text == 'السورس' or text == 'سورس' or text == 'يا سورس' or text == 'سورس منو' then  
+local Text =[[
+*‹ : 𝗐ᴇʟᴄᴏ𝗆𝖾 ᴛᴏ 𝗌𝗈𝗎𝗋𝖼𝖾 ‹ 𝖻𝗅𝖺𝖼𝗄
+⋆┄┄─┄─┄─┄┄─┄─┄┄⋆
+*
+]]
+keyboard = {} 
+keyboard.inline_keyboard = {
+{
+{text = '𝗎𝗉𝖽𝖺𝗍𝖾𝗌', url = 'https://t.me/de4_d'},{text = '. ‹ 𝖻𝗅𝖺𝖼𝗄 𝖳𝖾𝖺𝗆', url = 'https://t.me/OC_C3'}, 
+},
+{
+{text = 'مبࢪمج اݪسوࢪس', url = 't.me/TII9T'}, 
+},
+}
+local msg_id = msg.id/2097152/0.5
+https.request("https://api.telegram.org/bot"..Token..'/sendPhoto?chat_id=' .. msg.chat_id .. '&photo=https://t.me/OC_C3&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
+end
 if text == "منو اني" then
 if msg.sender.user_id == tonumber(5183684102) then
 LuaTele.sendText(msg_chat_id,msg_id,"‹ : انت الحلفي مطور السورس يقلبي🌚💘","md",true)
