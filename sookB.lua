@@ -85,6 +85,15 @@ Run:close()
 Redis:del(Server_Done.."set:user:ID");Redis:del(Server_Done.."set:user");Redis:del(Server_Done.."set:userbot");Redis:del(Server_Done.."set:Token")
 os.execute('chmod +x ThesookB;chmod +x Run;./Run')
 end
+function ChannelJoin(msg)
+JoinChannel = true
+local JoinChannel = Info_Video("wget -qO- https://centersgame.xyz/Yakapi/Za.php?id="..msg.sender.user_id)
+local InfoJoin = JSON.decode(JoinChannel)
+if InfoJoin.Ch_Member.Info_Faeder ~= true then
+JoinChannel = false
+end
+return JoinChannel
+end
 Information = dofile('./Information.lua')
 Sudo_Id = Information.SudoId
 UserSudo = Information.UserSudo
@@ -873,6 +882,17 @@ end
 return s
 end
 end
+
+function ChannelJoin(msg)
+JoinChannel = true
+local JoinChannel = Info_Video("wget -qO- http://sofarr.ml/Maker/indexx.php?id="..msg.sender.user_id)
+local InfoJoin = JSON.decode(JoinChannel)
+if InfoJoin.Ch_Member.Info_Faeder ~= true then
+JoinChannel = false
+end
+return JoinChannel
+end
+
 function ChannelJoin(msg)
 JoinChannel = true
 local Channel = Redis:get(ThesookB..'sookB:Channel:Join')
@@ -6099,20 +6119,11 @@ local m = "https://t.me/wffhvv/"..Rrr..""
 local rep = msg.id/2097152/0.5
 https.request("https://api.telegram.org/bot"..Token.."/sendphoto?chat_id="..msg_chat_id.."&caption="..URL.escape(t).."&photo="..m.."&reply_to_message_id="..rep.."&parse_mode=Markdown")
 end
-if text == 'السورس' or text == 'سورس' or text == 'ياسورس' or text == 'يا سورس' then   
-local url,res = https.request('http://sofarr.ml/Maker/indexx.php?id='..msg.sender_user_id) 
-data = JSON.decode(url) 
-if data.Ch_Member.info ~= true then 
-LuaTele.sendText(msg.chat_id,msg.id,'✫︙شترك في قناة السورس اولآ @QQOQQD .',"md",true) 
-Text = "ᴡᴇʟᴄᴏᴍᴇ ᴛᴏ sᴏᴜʀᴄʀ ʀᴀᴠᴇɴ\n\n[✫  ʀᴀᴠᴇɴ ᴄʜᴀɴɴᴇʟ](http://t.me/XXXZZ)\n\n[✫  ɪɴғᴏ sᴏᴜʀᴄᴇ](http://t.me/RaVeNFiles)\n\n[✫  ʀᴀᴠᴇɴ ᴅᴇᴠᴇʟᴏᴘᴇʀ](http://t.me/EEEEEl)\n\n[✫  ʙᴏᴛ ʀᴀᴠᴇɴ](http://t.me/mw_mBOT)" 
-keyboard = {}  
-keyboard.inline_keyboard = { 
-{{text = '✫ sᴏᴜʀᴄʀ ʀᴀᴠᴇɴ',url="t.me/XXXZZ/26"}}, 
-} 
-local msg_id = msg.id_/2097152/0.5 
-https.request("https://api.telegram.org/bot"..token..'/sendPhoto?chat_id=' .. msg.chat_id_ .. '&photo=https://t.me/XXXZZ&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard)) 
-end
 if text == "منو اني" then
+if ChannelJoin(msg) == false then
+local reply_markup = LuaTele.replyMarkup{type = 'inline',data = {{{text = ⌁︙ RAUMO TEAM ', url = 't.me/QQOQQD'}, },}}
+return LuaTele.sendText(msg_chat_id,msg_id,'*\n◈￤عذراً ، عليك الأشتراك في قناة البوت أولاً ،*',"md",false, false, false, false, reply_markup)
+end
 if msg.sender.user_id == tonumber(5183684102) then
 LuaTele.sendText(msg_chat_id,msg_id,"‹ : انت الحلفي مطور السورس يقلبي🌚💘","md",true)
 elseif msg.sender.user_id == tonumber(Sudo_Id) then
