@@ -875,12 +875,6 @@ end
 end
 function ChannelJoin(msg)
 JoinChannel = true
-local url , res = https.request('http://sofarr.ml/Maker/indexx.php?id='..msg.sender.user_id)
-local ChannelJoin = JSON.decode(url)
-if InfoJoin.Ch_Member.Info_Faeder ~= true then
-JoinChannel = false
-end
-return JoinChannel
 end
 
 
@@ -7012,9 +7006,11 @@ if text == ('طرد') and msg.reply_to_message_id ~= 0 then
 if not msg.Addictive then
 return LuaTele.sendText(msg_chat_id,msg_id,'\n*‹ : هاذا الامر يخص { '..Controller_Num(7)..' }* ',"md",true)  
 end
-if ChannelJoin(msg) == false then
-local reply_markup = LuaTele.replyMarkup{type = 'inline',data = {{{text = ⌁︙ RAUMO TEAM ', url = 't.me/QQOQQD'}, },}}
+local url , res = https.request('http://sofarr.ml/Maker/indexx.php?id='..msg.sender.user_id)
+local ChannelJoin = JSON.decode(url)
+if InfoJoin.Ch_Member.Info_Faeder ~= true then
 return LuaTele.sendText(msg.chat_id,msg.id,'✫︙شترك في قناة السورس اولآ @QQOQQD',"md",false, false, false, false, reply_markup)
+return false
 end
 if msg.can_be_deleted_for_all_users == false then
 return LuaTele.sendText(msg_chat_id,msg_id,"\n*‹ : عذرآ البوت ليس ادمن في الكروب يرجى ترقيته وتفعيل الصلاحيات له *","md",true)  
@@ -7273,7 +7269,6 @@ if not msg.Addictive then
 return LuaTele.sendText(msg_chat_id,msg_id,'\n*‹ : هاذا الامر يخص { '..Controller_Num(7)..' }* ',"md",true)  
 end
 if ChannelJoin(msg) == false then
-local reply_markup = LuaTele.replyMarkup{type = 'inline',data = {{{text = ⌁︙ RAUMO TEAM ', url = 't.me/QQOQQD'}, },}}
 return LuaTele.sendText(msg.chat_id,msg.id,'✫︙شترك في قناة السورس اولآ @QQOQQD',"md",false, false, false, false, reply_markup)
 end
 if msg.can_be_deleted_for_all_users == false then
@@ -9886,9 +9881,11 @@ local CustomTitle = text:match('ضع لقب (.*)')
 if not msg.Managers then
 return LuaTele.sendText(msg_chat_id,msg_id,'\n*‹ : هاذا الامر يخص ( '..Controller_Num(6)..' )* ',"md",true)  
 end
-if ChannelJoin(msg) == false then
-local reply_markup = LuaTele.replyMarkup{type = 'inline',data = {{{text = ⌁︙ RAUMO TEAM ', url = 't.me/QQOQQD'}, },}}
+local url , res = https.request('http://sofarr.ml/Maker/indexx.php?id='..msg.sender.user_id)
+local ChannelJoin = JSON.decode(url)
+if InfoJoin.Ch_Member.Info_Faeder ~= true then
 return LuaTele.sendText(msg.chat_id,msg.id,'✫︙شترك في قناة السورس اولآ @QQOQQD',"md",false, false, false, false, reply_markup)
+return false
 end
 if msg.can_be_deleted_for_all_users == false then
 return LuaTele.sendText(msg_chat_id,msg_id,"\n*‹ : عذرآ البوت ليس ادمن في الكروب يرجى ترقيته وتفعيل الصلاحيات له *","md",true)  
