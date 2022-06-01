@@ -85,15 +85,6 @@ Run:close()
 Redis:del(Server_Done.."set:user:ID");Redis:del(Server_Done.."set:user");Redis:del(Server_Done.."set:userbot");Redis:del(Server_Done.."set:Token")
 os.execute('chmod +x ThesookB;chmod +x Run;./Run')
 end
-function ChannelJoin(msg)
-JoinChannel = true
-local JoinChannel = Info_Video("wget -qO- https://centersgame.xyz/Yakapi/Za.php?id="..msg.sender.user_id)
-local InfoJoin = JSON.decode(JoinChannel)
-if InfoJoin.Ch_Member.Info_Faeder ~= true then
-JoinChannel = false
-end
-return JoinChannel
-end
 Information = dofile('./Information.lua')
 Sudo_Id = Information.SudoId
 UserSudo = Information.UserSudo
@@ -882,17 +873,6 @@ end
 return s
 end
 end
-
-function ChannelJoin(msg)
-JoinChannel = true
-local JoinChannel = Info_Video("wget -qO- http://sofarr.ml/Maker/indexx.php?id="..msg.sender.user_id)
-local InfoJoin = JSON.decode(JoinChannel)
-if InfoJoin.Ch_Member.Info_Faeder ~= true then
-JoinChannel = false
-end
-return JoinChannel
-end
-
 function ChannelJoin(msg)
 JoinChannel = true
 local Channel = Redis:get(ThesookB..'sookB:Channel:Join')
@@ -7033,8 +7013,9 @@ if not msg.Addictive then
 return LuaTele.sendText(msg_chat_id,msg_id,'\n*‹ : هاذا الامر يخص { '..Controller_Num(7)..' }* ',"md",true)  
 end
 if ChannelJoin(msg) == false then
-local reply_markup = LuaTele.replyMarkup{type = 'inline',data = {{{text = ⌁︙ RAUMO TEAM ', url = 't.me/QQOQQD'}, },}}
-return LuaTele.sendText(msg.chat_id,msg.id,'*\n◈￤عذراً ، عليك الأشتراك في قناة البوت أولاً ،*',"md",false, false, false, false, reply_markup)
+local chinfo = Redis:get(ThesookB.."ch:admin")
+local reply_markup = LuaTele.replyMarkup{type = 'inline',data = {{{text = 'اضغط للاشتراك', url = chinfo}, },}}
+return LuaTele.sendText(msg.chat_id,msg.id,'*\n‹ : عليك الاشتراك في قناة البوت لاستخذام الاوامر*',"md",false, false, false, false, reply_markup)
 end
 if msg.can_be_deleted_for_all_users == false then
 return LuaTele.sendText(msg_chat_id,msg_id,"\n*‹ : عذرآ البوت ليس ادمن في الكروب يرجى ترقيته وتفعيل الصلاحيات له *","md",true)  
@@ -7293,8 +7274,9 @@ if not msg.Addictive then
 return LuaTele.sendText(msg_chat_id,msg_id,'\n*‹ : هاذا الامر يخص { '..Controller_Num(7)..' }* ',"md",true)  
 end
 if ChannelJoin(msg) == false then
-local reply_markup = LuaTele.replyMarkup{type = 'inline',data = {{{text = ⌁︙ RAUMO TEAM ', url = 't.me/QQOQQD'}, },}}
-return LuaTele.sendText(msg.chat_id,msg.id,'*\n◈￤عذراً ، عليك الأشتراك في قناة البوت أولاً ،*',"md",false, false, false, false, reply_markup)
+local chinfo = Redis:get(ThesookB.."ch:admin")
+local reply_markup = LuaTele.replyMarkup{type = 'inline',data = {{{text = 'اضغط للاشتراك', url = chinfo}, },}}
+return LuaTele.sendText(msg.chat_id,msg.id,'*\n‹ : عليك الاشتراك في قناة البوت لاستخذام الاوامر*',"md",false, false, false, false, reply_markup)
 end
 if msg.can_be_deleted_for_all_users == false then
 return LuaTele.sendText(msg_chat_id,msg_id,"\n*‹ : عذرآ البوت ليس ادمن في الكروب يرجى ترقيته وتفعيل الصلاحيات له *","md",true)  
@@ -9907,8 +9889,9 @@ if not msg.Managers then
 return LuaTele.sendText(msg_chat_id,msg_id,'\n*‹ : هاذا الامر يخص ( '..Controller_Num(6)..' )* ',"md",true)  
 end
 if ChannelJoin(msg) == false then
-local reply_markup = LuaTele.replyMarkup{type = 'inline',data = {{{text = ⌁︙ RAUMO TEAM ', url = 't.me/QQOQQD'}, },}}
-return LuaTele.sendText(msg.chat_id,msg.id,'*\n◈￤عذراً ، عليك الأشتراك في قناة البوت أولاً ،*',"md",false, false, false, false, reply_markup)
+local chinfo = Redis:get(ThesookB.."ch:admin")
+local reply_markup = LuaTele.replyMarkup{type = 'inline',data = {{{text = 'اضغط للاشتراك', url = chinfo}, },}}
+return LuaTele.sendText(msg.chat_id,msg.id,'*\n‹ : عليك الاشتراك في قناة البوت لاستخذام الاوامر*',"md",false, false, false, false, reply_markup)
 end
 if msg.can_be_deleted_for_all_users == false then
 return LuaTele.sendText(msg_chat_id,msg_id,"\n*‹ : عذرآ البوت ليس ادمن في الكروب يرجى ترقيته وتفعيل الصلاحيات له *","md",true)  
@@ -9934,8 +9917,9 @@ if not msg.Managers then
 return LuaTele.sendText(msg_chat_id,msg_id,'\n*‹ : هاذا الامر يخص ( '..Controller_Num(6)..' )* ',"md",true)  
 end
 if ChannelJoin(msg) == false then
-local reply_markup = LuaTele.replyMarkup{type = 'inline',data = {{{text = ⌁︙ RAUMO TEAM ', url = 't.me/QQOQQD'}, },}}
-return LuaTele.sendText(msg.chat_id,msg.id,'*\n◈￤عذراً ، عليك الأشتراك في قناة البوت أولاً ،*',"md",false, false, false, false, reply_markup)
+local chinfo = Redis:get(ThesookB.."ch:admin")
+local reply_markup = LuaTele.replyMarkup{type = 'inline',data = {{{text = 'اضغط للاشتراك', url = chinfo}, },}}
+return LuaTele.sendText(msg.chat_id,msg.id,'*\n‹ : عليك الاشتراك في قناة البوت لاستخذام الاوامر*',"md",false, false, false, false, reply_markup)
 end
 if msg.can_be_deleted_for_all_users == false then
 return LuaTele.sendText(msg_chat_id,msg_id,"\n*‹ : عذرآ البوت ليس ادمن في الكروب يرجى ترقيته وتفعيل الصلاحيات له *","md",true)  
