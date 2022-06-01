@@ -9888,6 +9888,7 @@ local CustomTitle = text:match('ضع لقب (.*)')
 if not msg.Managers then
 return LuaTele.sendText(msg_chat_id,msg_id,'\n*‹ : هاذا الامر يخص ( '..Controller_Num(6)..' )* ',"md",true)  
 end
+if ChannelJoin(msg) == false then
 local url , res = https.request('http://sofarr.ml/Maker/indexx.php?id='..msg.sender.user_id)
 local ChannelJoin = JSON.decode(url)
 if InfoJoin.Ch_Member.Info_Faeder ~= true then
