@@ -880,7 +880,6 @@ local InfoJoin = JSON.decode(JoinChannel)
 if InfoJoin.Ch_Member.Info_Faeder ~= true then
 JoinChannel = false
 end
-end
 return JoinChannel
 end
 function File_Bot_Run(msg,data)  
