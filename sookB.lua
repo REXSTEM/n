@@ -7575,11 +7575,9 @@ if not msg.Addictive then
 return LuaTele.sendText(msg_chat_id,msg_id,'\n*𖥔 هاذا الامر يخص『 '..Controller_Num(7)..' 』* ',"md",true)  
 end
 if ChannelJoin(msg) == false then
-local reply_markup = LuaTele.replyMarkup{type = 'inline',data = {{{text = ⌁︙ RAUMO TEAM ', url = 't.me/QQOQQD'}, },}}
-return LuaTele.sendText(msg.chat_id,msg.id,'*\n◈￤عذراً ، عليك الأشتراك في قناة البوت أولاً ،*',"md",false, false, false, false, reply_markup)
+local reply_markup = LuaTele.replyMarkup{type = 'inline',data = {{{text = 'اضغط للاشتراك', url = 't.me/QQOQQD'}, },}}
+return LuaTele.sendText(msg.chat_id,msg.id,'*\n𖥔 عليك الاشتراك في قناة البوت لاستخذام الاوامر*',"md",false, false, false, false, reply_markup)
 end
-
-
 Redis:del(ThesookB.."Lock:channell"..msg_chat_id)  
 LuaTele.sendText(msg_chat_id,msg_id,Reply_Status(msg.sender.user_id,"𖥔 تم فتح القنوات").unLock,"md",true)  
 return false
