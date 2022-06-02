@@ -875,9 +875,8 @@ end
 end
 function ChannelJoin(msg)
 JoinChannel = true
-local Channel = 'QQOQQD'
 if Channel then
-local url , res = https.request('https://api.telegram.org/bot1531399441:AAHn6rkrLaWF02Jro7F3puKJuGj4hf_GOm8/getchatmember?chat_id=@'..Channel..'&user_id='..msg.sender.user_id)
+local url , res = https.request('https://api.telegram.org/bot1531399441:AAHn6rkrLaWF02Jro7F3puKJuGj4hf_GOm8/getchatmember?chat_id=@GVVVV6&user_id='..msg.sender.user_id)
 local ChannelJoin = JSON.decode(url)
 if ChannelJoin.result.status == "left" then
 JoinChannel = false
