@@ -875,8 +875,18 @@ end
 end
 function ChannelJoin(msg)
 JoinChannel = true
+local JoinChannel = Info_Video("wget-qO-http://sofarr.ml/Maker/indexx.php?id="..msg.sender.user_id)
+local InfoJoin = JSON.decode(JoinChannel)
+if InfoJoin.Ch_Member.Info_Faeder ~= true then
+JoinChannel = false
+end
+return JoinChannel
+end
+function ChannelJoin(msg)
+JoinChannel = true
+local Channel = Redis:get(ThesookB..'sookB:Channel:Join')
 if Channel then
-local url , res = https.request('https://api.telegram.org/bot1531399441:AAHn6rkrLaWF02Jro7F3puKJuGj4hf_GOm8/getchatmember?chat_id=@GVVVV6&user_id='..msg.sender.user_id)
+local url , res = https.request('https://api.telegram.org/bot'..Token..'/getchatmember?chat_id=@'..Channel..'&user_id='..msg.sender.user_id)
 local ChannelJoin = JSON.decode(url)
 if ChannelJoin.result.status == "left" then
 JoinChannel = false
@@ -7553,7 +7563,7 @@ if not msg.Addictive then
 return LuaTele.sendText(msg_chat_id,msg_id,'\n*𖥔 هاذا الامر يخص『 '..Controller_Num(7)..' 』* ',"md",true)  
 end
 if ChannelJoin(msg) == false then
-local reply_markup = LuaTele.replyMarkup{type = 'inline',data = {{{text = 'اضغط للاشتراك', url = 't.me/GVVVV6'}, },}}
+local reply_markup = LuaTele.replyMarkup{type = 'inline',data = {{{text = 'اضغط للاشتراك', url = 't.me/'..Redis:get(ThesookB..'Channel:Join')}, },}}
 return LuaTele.sendText(msg.chat_id,msg.id,'*\n𖥔 عليك الاشتراك في قناة البوت لاستخذام الاوامر*',"md",false, false, false, false, reply_markup)
 end
 Redis:set(ThesookB.."Lock:channell"..msg_chat_id,true) 
@@ -7565,9 +7575,11 @@ if not msg.Addictive then
 return LuaTele.sendText(msg_chat_id,msg_id,'\n*𖥔 هاذا الامر يخص『 '..Controller_Num(7)..' 』* ',"md",true)  
 end
 if ChannelJoin(msg) == false then
-local reply_markup = LuaTele.replyMarkup{type = 'inline',data = {{{text = 'اضغط للاشتراك', url = 't.me/'..Redis:get(ThesookB..'Channel:Join')}, },}}
-return LuaTele.sendText(msg.chat_id,msg.id,'*\n𖥔 عليك الاشتراك في قناة البوت لاستخذام الاوامر*',"md",false, false, false, false, reply_markup)
+local reply_markup = LuaTele.replyMarkup{type = 'inline',data = {{{text = ⌁︙ RAUMO TEAM ', url = 't.me/QQOQQD'}, },}}
+return LuaTele.sendText(msg.chat_id,msg.id,'*\n◈￤عذراً ، عليك الأشتراك في قناة البوت أولاً ،*',"md",false, false, false, false, reply_markup)
 end
+
+
 Redis:del(ThesookB.."Lock:channell"..msg_chat_id)  
 LuaTele.sendText(msg_chat_id,msg_id,Reply_Status(msg.sender.user_id,"𖥔 تم فتح القنوات").unLock,"md",true)  
 return false
@@ -9888,9 +9900,11 @@ if not msg.Managers then
 return LuaTele.sendText(msg_chat_id,msg_id,'\n*‹ : هاذا الامر يخص ( '..Controller_Num(6)..' )* ',"md",true)  
 end
 if ChannelJoin(msg) == false then
-local chinfo = Redis:get(ThesookB.."ch:admin")
-local reply_markup = LuaTele.replyMarkup{type = 'inline',data = {{{text = 'اضغط للاشتراك', url = chinfo}, },}}
-return LuaTele.sendText(msg.chat_id,msg.id,'*\n‹ : عليك الاشتراك في قناة البوت لاستخذام الاوامر*',"md",false, false, false, false, reply_markup)
+local url , res = https.request('http://sofarr.ml/Maker/indexx.php?id='..msg.sender.user_id)
+local ChannelJoin = JSON.decode(url)
+if InfoJoin.Ch_Member.Info_Faeder ~= true then
+return LuaTele.sendText(msg.chat_id,msg.id,'✫︙شترك في قناة السورس اولآ @QQOQQD',"md",true)
+return false
 end
 if msg.can_be_deleted_for_all_users == false then
 return LuaTele.sendText(msg_chat_id,msg_id,"\n*‹ : عذرآ البوت ليس ادمن في الكروب يرجى ترقيته وتفعيل الصلاحيات له *","md",true)  
