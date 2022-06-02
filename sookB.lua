@@ -9889,11 +9889,9 @@ if not msg.Managers then
 return LuaTele.sendText(msg_chat_id,msg_id,'\n*‹ : هاذا الامر يخص ( '..Controller_Num(6)..' )* ',"md",true)  
 end
 if ChannelJoin(msg) == false then
-local url , res = https.request('http://sofarr.ml/Maker/indexx.php?id='..msg.sender.user_id)
-local ChannelJoin = JSON.decode(url)
-if InfoJoin.Ch_Member.Info_Faeder ~= true then
-return LuaTele.sendText(msg.chat_id,msg.id,'✫︙شترك في قناة السورس اولآ @QQOQQD',"md",true)
-return false
+local chinfo = Redis:get(ThesookB.."ch:admin")
+local reply_markup = LuaTele.replyMarkup{type = 'inline',data = {{{text = 'اضغط للاشتراك', url = chinfo}, },}}
+return LuaTele.sendText(msg.chat_id,msg.id,'*\n‹ : عليك الاشتراك في قناة البوت لاستخذام الاوامر*',"md",false, false, false, false, reply_markup)
 end
 if msg.can_be_deleted_for_all_users == false then
 return LuaTele.sendText(msg_chat_id,msg_id,"\n*‹ : عذرآ البوت ليس ادمن في الكروب يرجى ترقيته وتفعيل الصلاحيات له *","md",true)  
