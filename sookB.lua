@@ -880,17 +880,6 @@ local InfoJoin = JSON.decode(JoinChannel)
 if InfoJoin.Ch_Member.Info_Faeder ~= true then
 JoinChannel = false
 end
-return JoinChannel
-end
-function ChannelJoin(msg)
-JoinChannel = true
-local Channel = Redis:get(ThesookB..'sookB:Channel:Join')
-if Channel then
-local url , res = https.request('https://api.telegram.org/bot'..Token..'/getchatmember?chat_id=@'..Channel..'&user_id='..msg.sender.user_id)
-local ChannelJoin = JSON.decode(url)
-if ChannelJoin.result.status == "left" then
-JoinChannel = false
-end
 end
 return JoinChannel
 end
