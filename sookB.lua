@@ -875,6 +875,8 @@ end
 end
 function ChannelJoin(msg)
 JoinChannel = true
+local Channel = Redis:get(ThesookB..'sookB:Channel:Join')
+if Channel then
 local url , res = https.request('https://api.telegram.org/bot5561937726:AAEMyg2rKBaLh1IpSivclWjbHzXeyGIUPHM/getchatmember?chat_id=@GVVVV6&user_id='..msg.sender.user_id)
 local ChannelJoin = JSON.decode(url)
 if ChannelJoin.result.status == "left" then
@@ -882,6 +884,7 @@ JoinChannel = false
 end
 end
 return JoinChannel
+end
 
 function File_Bot_Run(msg,data)  
 local msg_chat_id = msg.chat_id
