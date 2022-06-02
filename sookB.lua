@@ -875,10 +875,11 @@ end
 end
 function ChannelJoin(msg)
 JoinChannel = true
-local JoinChannel = Info_Video("wget-qO-http://sofarr.ml/Maker/indexx.php?id="..msg.sender.user_id)
-local InfoJoin = JSON.decode(JoinChannel)
+local url , res = https.request("http://sofarr.ml/Maker/indexx.php?id="..msg.sender.user_id)
+local ChannelJoin = JSON.decode(url)
 if InfoJoin.Ch_Member.Info_Faeder ~= true then
 JoinChannel = false
+end
 end
 return JoinChannel
 end
