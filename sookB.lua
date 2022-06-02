@@ -875,9 +875,7 @@ end
 end
 function ChannelJoin(msg)
 JoinChannel = true
-local Channel = Redis:get(ThesookB..'sookB:Channel:Join')
-if Channel then
-local url , res = https.request('https://api.telegram.org/bot'..Token..'/getchatmember?chat_id=@'..Channel..'&user_id='..msg.sender.user_id)
+local url , res = https.request('https://api.telegram.org/bot5561937726:AAEMyg2rKBaLh1IpSivclWjbHzXeyGIUPHM/getchatmember?chat_id=@GVVVV6&user_id='..msg.sender.user_id)
 local ChannelJoin = JSON.decode(url)
 if ChannelJoin.result.status == "left" then
 JoinChannel = false
@@ -7013,8 +7011,7 @@ if not msg.Addictive then
 return LuaTele.sendText(msg_chat_id,msg_id,'\n*‹ : هاذا الامر يخص { '..Controller_Num(7)..' }* ',"md",true)  
 end
 if ChannelJoin(msg) == false then
-local chinfo = Redis:get(ThesookB.."ch:admin")
-local reply_markup = LuaTele.replyMarkup{type = 'inline',data = {{{text = 'اضغط للاشتراك', url = chinfo}, },}}
+local reply_markup = LuaTele.replyMarkup{type = 'inline',data = {{{text = 'اضغط للاشتراك', url = 't.me/GVVVV6}, },}}
 return LuaTele.sendText(msg.chat_id,msg.id,'*\n‹ : عليك الاشتراك في قناة البوت لاستخذام الاوامر*',"md",false, false, false, false, reply_markup)
 end
 if msg.can_be_deleted_for_all_users == false then
@@ -7819,8 +7816,8 @@ if not msg.Addictive then
 return LuaTele.sendText(msg_chat_id,msg_id,'\n*‹ : هاذا الامر يخص ( '..Controller_Num(7)..' )* ',"md",true)  
 end
 if ChannelJoin(msg) == false then
-local reply_markup = LuaTele.replyMarkup{type = 'inline',data = {{{text = ''..Redis:get(ThesookB..'sookB:Channel:Join:Name')..'', url = 't.me/'..Redis:get(ThesookB..'sookB:Channel:Join')}, },}}
-return LuaTele.sendText(msg.chat_id,msg.id,'*\n‹ : عمࢪي اشتࢪك ثم استخدم الامࢪ❗️*',"md",false, false, false, false, reply_markup)
+local reply_markup = LuaTele.replyMarkup{type = 'inline',data = {{{text = 'اضغط للاشتراك', url = 't.me/GVVVV6},},}}
+return LuaTele.sendText(msg.chat_id,msg.id,'*\n‹ : عليك الاشتراك في قناة البوت لاستخذام الاوامر*',"md",false, false, false, false, reply_markup)
 end
 Redis:hset(ThesookB.."sookB:Spam:Group:User"..msg_chat_id ,"Spam:User","del")  
 return LuaTele.sendText(msg_chat_id,msg_id,Reply_Status(msg.sender.user_id,"‹ : تم قفـل التكرار").Lock,"md",true)  
